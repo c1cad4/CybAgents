@@ -1,0 +1,8 @@
+[package]
+name = "cybagents"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Bounded task execution primitives for CYBCORE agents"
+
+[dependencies]
