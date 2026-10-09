@@ -100,9 +100,6 @@ mod tests {
     fn rejects_zero_budget() {
         let mut t = task();
         t.budget.max_runtime = Duration::ZERO;
-        assert_eq!(
-            run(&Echo, &t, &["research"]),
-            Err(TaskError::InvalidBudget)
-        );
+        assert_eq!(run(&Echo, &t, &["research"]), Err(TaskError::InvalidBudget));
     }
 }
