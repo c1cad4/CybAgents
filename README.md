@@ -16,3 +16,10 @@ python3 -m unittest discover -s tests -v
 ## Интеграция
 
 [Сквозной API и UI](https://github.com/c1cad4/CybCore) · [Карта экосистемы](https://github.com/c1cad4/cybOS)
+
+## Advisor
+
+Advisor использует агента с memory.recall для чтения знаний, ограничивает контекст
+и вызывает переданный адаптер модели. Во время сетевого вызова SQLite-соединение
+закрыто. В CybCore это подключено к /ask; адаптер и ошибки протокола находятся
+в CybCore/local_model.py. Capabilities копируются в immutable tuple.
