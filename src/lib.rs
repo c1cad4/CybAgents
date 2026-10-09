@@ -56,7 +56,9 @@ mod tests {
 
     struct Echo;
     impl Agent for Echo {
-        fn execute(&self, input: &str) -> String { input.to_owned() }
+        fn execute(&self, input: &str) -> String {
+            input.to_owned()
+        }
     }
 
     fn task() -> Task {
@@ -78,20 +80,29 @@ mod tests {
 
     #[test]
     fn rejects_unapproved_capability() {
-        assert_eq!(run(&Echo, &task(), &["robot-actuate"]), Err(TaskError::PermissionDenied));
+        assert_eq!(
+            run(&Echo, &task(), &["robot-actuate"]),
+            Err(TaskError::PermissionDenied)
+        );
     }
 
     #[test]
     fn rejects_excessive_output() {
         let mut t = task();
         t.budget.max_output_bytes = 2;
-        assert_eq!(run(&Echo, &t, &["research"]), Err(TaskError::OutputTooLarge));
+        assert_eq!(
+            run(&Echo, &t, &["research"]),
+            Err(TaskError::OutputTooLarge)
+        );
     }
 
     #[test]
     fn rejects_zero_budget() {
         let mut t = task();
         t.budget.max_runtime = Duration::ZERO;
-        assert_eq!(run(&Echo, &t, &["research"]), Err(TaskError::InvalidBudget));
+        assert_eq!(
+            run(&Echo, &t, &["research"]),
+            Err(TaskError::InvalidBudget)
+        );
     }
 }
